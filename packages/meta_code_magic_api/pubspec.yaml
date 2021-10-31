@@ -1,0 +1,19 @@
+name: meta_code_magic_api
+description: A Dart API Client for the CodeMagic API.
+version: 1.0.0
+
+environment:
+  sdk: '>=2.14.0 <3.0.0'
+
+dependencies:
+  http: ^0.13.4
+  json_annotation: ^4.3.0
+
+dev_dependencies:
+  test: ^1.19.2
+  mocktail: ^0.2.0
+
+  freezed: ^0.15.0+1
+  freezed_annotation: ^0.15.0
+  build_runner: ^2.1.4
+  json_serializable: ^6.0.1
