@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "170647162319",
+    "project_id": "cool-magic-89ede",
+    "storage_bucket": "cool-magic-89ede.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:170647162319:android:ff3ee922dc5bd8acd9d6ba",
+        "android_client_info": {
+          "package_name": "com.camiloagudelo.cool_magic"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "170647162319-901og1d35k9m826a96o6qq73iuavo62n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.camiloagudelo.cool_magic",
+            "certificate_hash": "604ca77ca689457454526824d68600842e5d8331"
+          }
+        },
+        {
+          "client_id": "170647162319-3gfmnjllf61t6a68iuuk8429rqdnvec8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDlTFkskep-dAQCqYLzy3Q49nF8mkxunGU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "170647162319-3gfmnjllf61t6a68iuuk8429rqdnvec8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
