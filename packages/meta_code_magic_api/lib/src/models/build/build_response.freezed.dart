@@ -370,8 +370,8 @@ class _$BuildTearOff {
       required String branch,
       required String? tag,
       required String status,
-      required String startedAt,
-      required String finishedAt,
+      required DateTime startedAt,
+      required DateTime finishedAt,
       required List<Artefact> artefacts}) {
     return _Build(
       id: id,
@@ -403,8 +403,8 @@ mixin _$Build {
   String get branch => throw _privateConstructorUsedError;
   String? get tag => throw _privateConstructorUsedError;
   String get status => throw _privateConstructorUsedError;
-  String get startedAt => throw _privateConstructorUsedError;
-  String get finishedAt => throw _privateConstructorUsedError;
+  DateTime get startedAt => throw _privateConstructorUsedError;
+  DateTime get finishedAt => throw _privateConstructorUsedError;
   List<Artefact> get artefacts => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -423,8 +423,8 @@ abstract class $BuildCopyWith<$Res> {
       String branch,
       String? tag,
       String status,
-      String startedAt,
-      String finishedAt,
+      DateTime startedAt,
+      DateTime finishedAt,
       List<Artefact> artefacts});
 }
 
@@ -476,11 +476,11 @@ class _$BuildCopyWithImpl<$Res> implements $BuildCopyWith<$Res> {
       startedAt: startedAt == freezed
           ? _value.startedAt
           : startedAt // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime,
       finishedAt: finishedAt == freezed
           ? _value.finishedAt
           : finishedAt // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime,
       artefacts: artefacts == freezed
           ? _value.artefacts
           : artefacts // ignore: cast_nullable_to_non_nullable
@@ -501,8 +501,8 @@ abstract class _$BuildCopyWith<$Res> implements $BuildCopyWith<$Res> {
       String branch,
       String? tag,
       String status,
-      String startedAt,
-      String finishedAt,
+      DateTime startedAt,
+      DateTime finishedAt,
       List<Artefact> artefacts});
 }
 
@@ -555,11 +555,11 @@ class __$BuildCopyWithImpl<$Res> extends _$BuildCopyWithImpl<$Res>
       startedAt: startedAt == freezed
           ? _value.startedAt
           : startedAt // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime,
       finishedAt: finishedAt == freezed
           ? _value.finishedAt
           : finishedAt // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime,
       artefacts: artefacts == freezed
           ? _value.artefacts
           : artefacts // ignore: cast_nullable_to_non_nullable
@@ -599,9 +599,9 @@ class _$_Build implements _Build {
   @override
   final String status;
   @override
-  final String startedAt;
+  final DateTime startedAt;
   @override
-  final String finishedAt;
+  final DateTime finishedAt;
   @override
   final List<Artefact> artefacts;
 
@@ -661,8 +661,8 @@ abstract class _Build implements Build {
       required String branch,
       required String? tag,
       required String status,
-      required String startedAt,
-      required String finishedAt,
+      required DateTime startedAt,
+      required DateTime finishedAt,
       required List<Artefact> artefacts}) = _$_Build;
 
   factory _Build.fromJson(Map<String, dynamic> json) = _$_Build.fromJson;
@@ -681,9 +681,9 @@ abstract class _Build implements Build {
   @override
   String get status;
   @override
-  String get startedAt;
+  DateTime get startedAt;
   @override
-  String get finishedAt;
+  DateTime get finishedAt;
   @override
   List<Artefact> get artefacts;
   @override

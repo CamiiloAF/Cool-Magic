@@ -65,7 +65,7 @@ void main() {
       test('throws BuildNotFoundFailure on empty response', () async {
         final response = MockResponse();
         when(() => response.statusCode).thenReturn(200);
-        when(() => response.body).thenReturn('[]');
+        when(() => response.body).thenReturn('{}');
         when(() => httpClient.get(any())).thenAnswer((_) async => response);
 
         await expectLater(

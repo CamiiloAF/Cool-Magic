@@ -35,7 +35,9 @@ class MetaCodeMagicApiClient {
       response.body,
     ) as Map<String, dynamic>;
 
-    if (json.containsKey('error') || json.containsKey('message')) {
+    if (json.isEmpty ||
+        json.containsKey('error') ||
+        json.containsKey('message')) {
       throw BuildNotFoundFailure();
     }
 

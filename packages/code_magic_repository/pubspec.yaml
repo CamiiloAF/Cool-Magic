@@ -1,0 +1,19 @@
+name: code_magic_repository
+description: A Dart Repository which manages the code magic domain.
+version: 1.0.0+1
+publish_to: none
+
+
+environment:
+  sdk: '>=2.14.0 <3.0.0'
+
+dependencies:
+   meta_code_magic_api:
+     path: ../meta_code_magic_api
+
+dev_dependencies:
+  freezed: ^0.15.0+1
+  freezed_annotation: ^0.15.0
+  build_runner: ^2.1.4
+  mocktail: ^0.2.0
+  test: ^1.16.4

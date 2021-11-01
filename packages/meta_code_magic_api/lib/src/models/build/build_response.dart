@@ -34,8 +34,8 @@ class Build with _$Build {
     required String branch,
     required String? tag,
     required String status,
-    required String startedAt,
-    required String finishedAt,
+    required DateTime startedAt,
+    required DateTime finishedAt,
     required List<Artefact> artefacts,
   }) = _Build;
 

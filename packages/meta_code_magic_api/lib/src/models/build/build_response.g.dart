@@ -41,8 +41,8 @@ _$_Build _$$_BuildFromJson(Map<String, dynamic> json) => _$_Build(
       branch: json['branch'] as String,
       tag: json['tag'] as String?,
       status: json['status'] as String,
-      startedAt: json['startedAt'] as String,
-      finishedAt: json['finishedAt'] as String,
+      startedAt: DateTime.parse(json['startedAt'] as String),
+      finishedAt: DateTime.parse(json['finishedAt'] as String),
       artefacts: (json['artefacts'] as List<dynamic>)
           .map((e) => Artefact.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -55,8 +55,8 @@ Map<String, dynamic> _$$_BuildToJson(_$_Build instance) => <String, dynamic>{
       'branch': instance.branch,
       'tag': instance.tag,
       'status': instance.status,
-      'startedAt': instance.startedAt,
-      'finishedAt': instance.finishedAt,
+      'startedAt': instance.startedAt.toIso8601String(),
+      'finishedAt': instance.finishedAt.toIso8601String(),
       'artefacts': instance.artefacts,
     };
 
