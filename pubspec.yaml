@@ -9,6 +9,8 @@ environment:
 dependencies:
   authentication_repository:
     path: packages/authentication_repository
+  code_magic_repository:
+    path: packages/code_magic_repository
   bloc: ^7.2.1
   flow_builder: ^0.0.4
   flutter:
@@ -19,7 +21,6 @@ dependencies:
     path: packages/form_inputs
   formz: ^0.4.1
   google_fonts: ^2.1.0
-  meta: ^1.7.0
   very_good_analysis: ^2.4.0
 
 dev_dependencies:

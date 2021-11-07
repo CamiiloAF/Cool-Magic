@@ -25,7 +25,9 @@ class MetaCodeMagicApiClient {
     final request =
         Uri.https(_baseUrl, '/builds', <String, String>{'appId': appId});
 
-    final response = await _httpClient.get(request);
+    final response = await _httpClient.get(request, headers: {
+      'x-auth-token': '-EbsowVp8aqUrrfu09nYXcGyy1dVeKwljqjIVme7w8c',
+    });
 
     if (response.statusCode != 200) {
       throw BuildRequestFailure();

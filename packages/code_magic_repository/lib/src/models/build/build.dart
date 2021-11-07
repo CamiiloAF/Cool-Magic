@@ -2,14 +2,14 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'build.freezed.dart';
 
+enum BuildState { preparing, canceled, failed, finished, unknown }
+
 @freezed
 class Build with _$Build {
   const factory Build({
-    required String workflowId,
-    required String branch,
-    required String status,
-    required DateTime finishedAt,
-    required List<Artefact> artefacts,
+    required BuildState state,
+    required String workflow,
+    required Artefact? artefacts,
   }) = _Build;
 }
 
@@ -20,5 +20,6 @@ class Artefact with _$Artefact {
     required String type,
     required String url,
     required String? versionName,
+    required String? versionCode,
   }) = _Artefact;
 }

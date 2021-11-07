@@ -1,1 +1,1 @@
-export 'package:build/build.dart';
+export 'build/build.dart';

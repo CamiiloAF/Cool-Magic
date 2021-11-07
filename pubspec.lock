@@ -162,6 +162,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.1.0"
+  code_magic_repository:
+    dependency: "direct main"
+    description:
+      path: "packages/code_magic_repository"
+      relative: true
+    source: path
+    version: "1.0.0+1"
   collection:
     dependency: transitive
     description:
@@ -451,12 +458,19 @@ packages:
     source: hosted
     version: "0.12.10"
   meta:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: meta
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.7.0"
+  meta_code_magic_api:
+    dependency: transitive
+    description:
+      path: "packages/meta_code_magic_api"
+      relative: true
+    source: path
+    version: "1.0.0"
   mime:
     dependency: transitive
     description:

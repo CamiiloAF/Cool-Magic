@@ -369,10 +369,12 @@ class _$BuildTearOff {
       required String workflowId,
       required String branch,
       required String? tag,
-      required String status,
+      required BuildStatus status,
       required DateTime startedAt,
-      required DateTime finishedAt,
-      required List<Artefact> artefacts}) {
+      required DateTime? finishedAt,
+      required List<Artefact> artefacts,
+      required int index,
+      required Config config}) {
     return _Build(
       id: id,
       appId: appId,
@@ -383,6 +385,8 @@ class _$BuildTearOff {
       startedAt: startedAt,
       finishedAt: finishedAt,
       artefacts: artefacts,
+      index: index,
+      config: config,
     );
   }
 
@@ -402,10 +406,12 @@ mixin _$Build {
   String get workflowId => throw _privateConstructorUsedError;
   String get branch => throw _privateConstructorUsedError;
   String? get tag => throw _privateConstructorUsedError;
-  String get status => throw _privateConstructorUsedError;
+  BuildStatus get status => throw _privateConstructorUsedError;
   DateTime get startedAt => throw _privateConstructorUsedError;
-  DateTime get finishedAt => throw _privateConstructorUsedError;
+  DateTime? get finishedAt => throw _privateConstructorUsedError;
   List<Artefact> get artefacts => throw _privateConstructorUsedError;
+  int get index => throw _privateConstructorUsedError;
+  Config get config => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -422,10 +428,14 @@ abstract class $BuildCopyWith<$Res> {
       String workflowId,
       String branch,
       String? tag,
-      String status,
+      BuildStatus status,
       DateTime startedAt,
-      DateTime finishedAt,
-      List<Artefact> artefacts});
+      DateTime? finishedAt,
+      List<Artefact> artefacts,
+      int index,
+      Config config});
+
+  $ConfigCopyWith<$Res> get config;
 }
 
 /// @nodoc
@@ -447,6 +457,8 @@ class _$BuildCopyWithImpl<$Res> implements $BuildCopyWith<$Res> {
     Object? startedAt = freezed,
     Object? finishedAt = freezed,
     Object? artefacts = freezed,
+    Object? index = freezed,
+    Object? config = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -472,7 +484,7 @@ class _$BuildCopyWithImpl<$Res> implements $BuildCopyWith<$Res> {
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String,
+              as BuildStatus,
       startedAt: startedAt == freezed
           ? _value.startedAt
           : startedAt // ignore: cast_nullable_to_non_nullable
@@ -480,12 +492,27 @@ class _$BuildCopyWithImpl<$Res> implements $BuildCopyWith<$Res> {
       finishedAt: finishedAt == freezed
           ? _value.finishedAt
           : finishedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
       artefacts: artefacts == freezed
           ? _value.artefacts
           : artefacts // ignore: cast_nullable_to_non_nullable
               as List<Artefact>,
+      index: index == freezed
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+      config: config == freezed
+          ? _value.config
+          : config // ignore: cast_nullable_to_non_nullable
+              as Config,
     ));
+  }
+
+  @override
+  $ConfigCopyWith<$Res> get config {
+    return $ConfigCopyWith<$Res>(_value.config, (value) {
+      return _then(_value.copyWith(config: value));
+    });
   }
 }
 
@@ -500,10 +527,15 @@ abstract class _$BuildCopyWith<$Res> implements $BuildCopyWith<$Res> {
       String workflowId,
       String branch,
       String? tag,
-      String status,
+      BuildStatus status,
       DateTime startedAt,
-      DateTime finishedAt,
-      List<Artefact> artefacts});
+      DateTime? finishedAt,
+      List<Artefact> artefacts,
+      int index,
+      Config config});
+
+  @override
+  $ConfigCopyWith<$Res> get config;
 }
 
 /// @nodoc
@@ -526,6 +558,8 @@ class __$BuildCopyWithImpl<$Res> extends _$BuildCopyWithImpl<$Res>
     Object? startedAt = freezed,
     Object? finishedAt = freezed,
     Object? artefacts = freezed,
+    Object? index = freezed,
+    Object? config = freezed,
   }) {
     return _then(_Build(
       id: id == freezed
@@ -551,7 +585,7 @@ class __$BuildCopyWithImpl<$Res> extends _$BuildCopyWithImpl<$Res>
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String,
+              as BuildStatus,
       startedAt: startedAt == freezed
           ? _value.startedAt
           : startedAt // ignore: cast_nullable_to_non_nullable
@@ -559,11 +593,19 @@ class __$BuildCopyWithImpl<$Res> extends _$BuildCopyWithImpl<$Res>
       finishedAt: finishedAt == freezed
           ? _value.finishedAt
           : finishedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
       artefacts: artefacts == freezed
           ? _value.artefacts
           : artefacts // ignore: cast_nullable_to_non_nullable
               as List<Artefact>,
+      index: index == freezed
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+      config: config == freezed
+          ? _value.config
+          : config // ignore: cast_nullable_to_non_nullable
+              as Config,
     ));
   }
 }
@@ -580,7 +622,9 @@ class _$_Build implements _Build {
       required this.status,
       required this.startedAt,
       required this.finishedAt,
-      required this.artefacts});
+      required this.artefacts,
+      required this.index,
+      required this.config});
 
   factory _$_Build.fromJson(Map<String, dynamic> json) =>
       _$$_BuildFromJson(json);
@@ -597,17 +641,21 @@ class _$_Build implements _Build {
   @override
   final String? tag;
   @override
-  final String status;
+  final BuildStatus status;
   @override
   final DateTime startedAt;
   @override
-  final DateTime finishedAt;
+  final DateTime? finishedAt;
   @override
   final List<Artefact> artefacts;
+  @override
+  final int index;
+  @override
+  final Config config;
 
   @override
   String toString() {
-    return 'Build(id: $id, appId: $appId, workflowId: $workflowId, branch: $branch, tag: $tag, status: $status, startedAt: $startedAt, finishedAt: $finishedAt, artefacts: $artefacts)';
+    return 'Build(id: $id, appId: $appId, workflowId: $workflowId, branch: $branch, tag: $tag, status: $status, startedAt: $startedAt, finishedAt: $finishedAt, artefacts: $artefacts, index: $index, config: $config)';
   }
 
   @override
@@ -626,7 +674,9 @@ class _$_Build implements _Build {
                 other.startedAt == startedAt) &&
             (identical(other.finishedAt, finishedAt) ||
                 other.finishedAt == finishedAt) &&
-            const DeepCollectionEquality().equals(other.artefacts, artefacts));
+            const DeepCollectionEquality().equals(other.artefacts, artefacts) &&
+            (identical(other.index, index) || other.index == index) &&
+            (identical(other.config, config) || other.config == config));
   }
 
   @override
@@ -640,7 +690,9 @@ class _$_Build implements _Build {
       status,
       startedAt,
       finishedAt,
-      const DeepCollectionEquality().hash(artefacts));
+      const DeepCollectionEquality().hash(artefacts),
+      index,
+      config);
 
   @JsonKey(ignore: true)
   @override
@@ -660,10 +712,12 @@ abstract class _Build implements Build {
       required String workflowId,
       required String branch,
       required String? tag,
-      required String status,
+      required BuildStatus status,
       required DateTime startedAt,
-      required DateTime finishedAt,
-      required List<Artefact> artefacts}) = _$_Build;
+      required DateTime? finishedAt,
+      required List<Artefact> artefacts,
+      required int index,
+      required Config config}) = _$_Build;
 
   factory _Build.fromJson(Map<String, dynamic> json) = _$_Build.fromJson;
 
@@ -679,13 +733,17 @@ abstract class _Build implements Build {
   @override
   String? get tag;
   @override
-  String get status;
+  BuildStatus get status;
   @override
   DateTime get startedAt;
   @override
-  DateTime get finishedAt;
+  DateTime? get finishedAt;
   @override
   List<Artefact> get artefacts;
+  @override
+  int get index;
+  @override
+  Config get config;
   @override
   @JsonKey(ignore: true)
   _$BuildCopyWith<_Build> get copyWith => throw _privateConstructorUsedError;
@@ -700,21 +758,21 @@ class _$ArtefactTearOff {
   const _$ArtefactTearOff();
 
   _Artefact call(
-      {required String md5,
-      required String name,
-      required String? packageName,
+      {required String name,
       required int size,
       required String type,
       required String url,
-      required String? versionName}) {
+      required String? version,
+      required String? versionName,
+      required String? version_code}) {
     return _Artefact(
-      md5: md5,
       name: name,
-      packageName: packageName,
       size: size,
       type: type,
       url: url,
+      version: version,
       versionName: versionName,
+      version_code: version_code,
     );
   }
 
@@ -728,13 +786,13 @@ const $Artefact = _$ArtefactTearOff();
 
 /// @nodoc
 mixin _$Artefact {
-  String get md5 => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  String? get packageName => throw _privateConstructorUsedError;
   int get size => throw _privateConstructorUsedError;
   String get type => throw _privateConstructorUsedError;
   String get url => throw _privateConstructorUsedError;
+  String? get version => throw _privateConstructorUsedError;
   String? get versionName => throw _privateConstructorUsedError;
+  String? get version_code => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -747,13 +805,13 @@ abstract class $ArtefactCopyWith<$Res> {
   factory $ArtefactCopyWith(Artefact value, $Res Function(Artefact) then) =
       _$ArtefactCopyWithImpl<$Res>;
   $Res call(
-      {String md5,
-      String name,
-      String? packageName,
+      {String name,
       int size,
       String type,
       String url,
-      String? versionName});
+      String? version,
+      String? versionName,
+      String? version_code});
 }
 
 /// @nodoc
@@ -766,27 +824,19 @@ class _$ArtefactCopyWithImpl<$Res> implements $ArtefactCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? md5 = freezed,
     Object? name = freezed,
-    Object? packageName = freezed,
     Object? size = freezed,
     Object? type = freezed,
     Object? url = freezed,
+    Object? version = freezed,
     Object? versionName = freezed,
+    Object? version_code = freezed,
   }) {
     return _then(_value.copyWith(
-      md5: md5 == freezed
-          ? _value.md5
-          : md5 // ignore: cast_nullable_to_non_nullable
-              as String,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      packageName: packageName == freezed
-          ? _value.packageName
-          : packageName // ignore: cast_nullable_to_non_nullable
-              as String?,
       size: size == freezed
           ? _value.size
           : size // ignore: cast_nullable_to_non_nullable
@@ -799,9 +849,17 @@ class _$ArtefactCopyWithImpl<$Res> implements $ArtefactCopyWith<$Res> {
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
+      version: version == freezed
+          ? _value.version
+          : version // ignore: cast_nullable_to_non_nullable
+              as String?,
       versionName: versionName == freezed
           ? _value.versionName
           : versionName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      version_code: version_code == freezed
+          ? _value.version_code
+          : version_code // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -813,13 +871,13 @@ abstract class _$ArtefactCopyWith<$Res> implements $ArtefactCopyWith<$Res> {
       __$ArtefactCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String md5,
-      String name,
-      String? packageName,
+      {String name,
       int size,
       String type,
       String url,
-      String? versionName});
+      String? version,
+      String? versionName,
+      String? version_code});
 }
 
 /// @nodoc
@@ -833,27 +891,19 @@ class __$ArtefactCopyWithImpl<$Res> extends _$ArtefactCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? md5 = freezed,
     Object? name = freezed,
-    Object? packageName = freezed,
     Object? size = freezed,
     Object? type = freezed,
     Object? url = freezed,
+    Object? version = freezed,
     Object? versionName = freezed,
+    Object? version_code = freezed,
   }) {
     return _then(_Artefact(
-      md5: md5 == freezed
-          ? _value.md5
-          : md5 // ignore: cast_nullable_to_non_nullable
-              as String,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      packageName: packageName == freezed
-          ? _value.packageName
-          : packageName // ignore: cast_nullable_to_non_nullable
-              as String?,
       size: size == freezed
           ? _value.size
           : size // ignore: cast_nullable_to_non_nullable
@@ -866,9 +916,17 @@ class __$ArtefactCopyWithImpl<$Res> extends _$ArtefactCopyWithImpl<$Res>
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
+      version: version == freezed
+          ? _value.version
+          : version // ignore: cast_nullable_to_non_nullable
+              as String?,
       versionName: versionName == freezed
           ? _value.versionName
           : versionName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      version_code: version_code == freezed
+          ? _value.version_code
+          : version_code // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -878,23 +936,19 @@ class __$ArtefactCopyWithImpl<$Res> extends _$ArtefactCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Artefact implements _Artefact {
   const _$_Artefact(
-      {required this.md5,
-      required this.name,
-      required this.packageName,
+      {required this.name,
       required this.size,
       required this.type,
       required this.url,
-      required this.versionName});
+      required this.version,
+      required this.versionName,
+      required this.version_code});
 
   factory _$_Artefact.fromJson(Map<String, dynamic> json) =>
       _$$_ArtefactFromJson(json);
 
   @override
-  final String md5;
-  @override
   final String name;
-  @override
-  final String? packageName;
   @override
   final int size;
   @override
@@ -902,11 +956,15 @@ class _$_Artefact implements _Artefact {
   @override
   final String url;
   @override
+  final String? version;
+  @override
   final String? versionName;
+  @override
+  final String? version_code;
 
   @override
   String toString() {
-    return 'Artefact(md5: $md5, name: $name, packageName: $packageName, size: $size, type: $type, url: $url, versionName: $versionName)';
+    return 'Artefact(name: $name, size: $size, type: $type, url: $url, version: $version, versionName: $versionName, version_code: $version_code)';
   }
 
   @override
@@ -914,20 +972,20 @@ class _$_Artefact implements _Artefact {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Artefact &&
-            (identical(other.md5, md5) || other.md5 == md5) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.packageName, packageName) ||
-                other.packageName == packageName) &&
             (identical(other.size, size) || other.size == size) &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.url, url) || other.url == url) &&
+            (identical(other.version, version) || other.version == version) &&
             (identical(other.versionName, versionName) ||
-                other.versionName == versionName));
+                other.versionName == versionName) &&
+            (identical(other.version_code, version_code) ||
+                other.version_code == version_code));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, md5, name, packageName, size, type, url, versionName);
+      runtimeType, name, size, type, url, version, versionName, version_code);
 
   @JsonKey(ignore: true)
   @override
@@ -942,22 +1000,18 @@ class _$_Artefact implements _Artefact {
 
 abstract class _Artefact implements Artefact {
   const factory _Artefact(
-      {required String md5,
-      required String name,
-      required String? packageName,
+      {required String name,
       required int size,
       required String type,
       required String url,
-      required String? versionName}) = _$_Artefact;
+      required String? version,
+      required String? versionName,
+      required String? version_code}) = _$_Artefact;
 
   factory _Artefact.fromJson(Map<String, dynamic> json) = _$_Artefact.fromJson;
 
   @override
-  String get md5;
-  @override
   String get name;
-  @override
-  String? get packageName;
   @override
   int get size;
   @override
@@ -965,9 +1019,430 @@ abstract class _Artefact implements Artefact {
   @override
   String get url;
   @override
+  String? get version;
+  @override
   String? get versionName;
+  @override
+  String? get version_code;
   @override
   @JsonKey(ignore: true)
   _$ArtefactCopyWith<_Artefact> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+Config _$ConfigFromJson(Map<String, dynamic> json) {
+  return _Config.fromJson(json);
+}
+
+/// @nodoc
+class _$ConfigTearOff {
+  const _$ConfigTearOff();
+
+  _Config call({required BuildSettings buildSettings, required String name}) {
+    return _Config(
+      buildSettings: buildSettings,
+      name: name,
+    );
+  }
+
+  Config fromJson(Map<String, Object?> json) {
+    return Config.fromJson(json);
+  }
+}
+
+/// @nodoc
+const $Config = _$ConfigTearOff();
+
+/// @nodoc
+mixin _$Config {
+  BuildSettings get buildSettings => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $ConfigCopyWith<Config> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ConfigCopyWith<$Res> {
+  factory $ConfigCopyWith(Config value, $Res Function(Config) then) =
+      _$ConfigCopyWithImpl<$Res>;
+  $Res call({BuildSettings buildSettings, String name});
+
+  $BuildSettingsCopyWith<$Res> get buildSettings;
+}
+
+/// @nodoc
+class _$ConfigCopyWithImpl<$Res> implements $ConfigCopyWith<$Res> {
+  _$ConfigCopyWithImpl(this._value, this._then);
+
+  final Config _value;
+  // ignore: unused_field
+  final $Res Function(Config) _then;
+
+  @override
+  $Res call({
+    Object? buildSettings = freezed,
+    Object? name = freezed,
+  }) {
+    return _then(_value.copyWith(
+      buildSettings: buildSettings == freezed
+          ? _value.buildSettings
+          : buildSettings // ignore: cast_nullable_to_non_nullable
+              as BuildSettings,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+
+  @override
+  $BuildSettingsCopyWith<$Res> get buildSettings {
+    return $BuildSettingsCopyWith<$Res>(_value.buildSettings, (value) {
+      return _then(_value.copyWith(buildSettings: value));
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$ConfigCopyWith<$Res> implements $ConfigCopyWith<$Res> {
+  factory _$ConfigCopyWith(_Config value, $Res Function(_Config) then) =
+      __$ConfigCopyWithImpl<$Res>;
+  @override
+  $Res call({BuildSettings buildSettings, String name});
+
+  @override
+  $BuildSettingsCopyWith<$Res> get buildSettings;
+}
+
+/// @nodoc
+class __$ConfigCopyWithImpl<$Res> extends _$ConfigCopyWithImpl<$Res>
+    implements _$ConfigCopyWith<$Res> {
+  __$ConfigCopyWithImpl(_Config _value, $Res Function(_Config) _then)
+      : super(_value, (v) => _then(v as _Config));
+
+  @override
+  _Config get _value => super._value as _Config;
+
+  @override
+  $Res call({
+    Object? buildSettings = freezed,
+    Object? name = freezed,
+  }) {
+    return _then(_Config(
+      buildSettings: buildSettings == freezed
+          ? _value.buildSettings
+          : buildSettings // ignore: cast_nullable_to_non_nullable
+              as BuildSettings,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_Config implements _Config {
+  const _$_Config({required this.buildSettings, required this.name});
+
+  factory _$_Config.fromJson(Map<String, dynamic> json) =>
+      _$$_ConfigFromJson(json);
+
+  @override
+  final BuildSettings buildSettings;
+  @override
+  final String name;
+
+  @override
+  String toString() {
+    return 'Config(buildSettings: $buildSettings, name: $name)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _Config &&
+            (identical(other.buildSettings, buildSettings) ||
+                other.buildSettings == buildSettings) &&
+            (identical(other.name, name) || other.name == name));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, buildSettings, name);
+
+  @JsonKey(ignore: true)
+  @override
+  _$ConfigCopyWith<_Config> get copyWith =>
+      __$ConfigCopyWithImpl<_Config>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_ConfigToJson(this);
+  }
+}
+
+abstract class _Config implements Config {
+  const factory _Config(
+      {required BuildSettings buildSettings, required String name}) = _$_Config;
+
+  factory _Config.fromJson(Map<String, dynamic> json) = _$_Config.fromJson;
+
+  @override
+  BuildSettings get buildSettings;
+  @override
+  String get name;
+  @override
+  @JsonKey(ignore: true)
+  _$ConfigCopyWith<_Config> get copyWith => throw _privateConstructorUsedError;
+}
+
+BuildSettings _$BuildSettingsFromJson(Map<String, dynamic> json) {
+  return _BuildSettings.fromJson(json);
+}
+
+/// @nodoc
+class _$BuildSettingsTearOff {
+  const _$BuildSettingsTearOff();
+
+  _BuildSettings call(
+      {required bool flutterBuildIpa,
+      required String flutterVersion,
+      required String flutterMode,
+      required bool stopBuildIfTestsFail,
+      required String xcodeVersion}) {
+    return _BuildSettings(
+      flutterBuildIpa: flutterBuildIpa,
+      flutterVersion: flutterVersion,
+      flutterMode: flutterMode,
+      stopBuildIfTestsFail: stopBuildIfTestsFail,
+      xcodeVersion: xcodeVersion,
+    );
+  }
+
+  BuildSettings fromJson(Map<String, Object?> json) {
+    return BuildSettings.fromJson(json);
+  }
+}
+
+/// @nodoc
+const $BuildSettings = _$BuildSettingsTearOff();
+
+/// @nodoc
+mixin _$BuildSettings {
+  bool get flutterBuildIpa => throw _privateConstructorUsedError;
+  String get flutterVersion => throw _privateConstructorUsedError;
+  String get flutterMode => throw _privateConstructorUsedError;
+  bool get stopBuildIfTestsFail => throw _privateConstructorUsedError;
+  String get xcodeVersion => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $BuildSettingsCopyWith<BuildSettings> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $BuildSettingsCopyWith<$Res> {
+  factory $BuildSettingsCopyWith(
+          BuildSettings value, $Res Function(BuildSettings) then) =
+      _$BuildSettingsCopyWithImpl<$Res>;
+  $Res call(
+      {bool flutterBuildIpa,
+      String flutterVersion,
+      String flutterMode,
+      bool stopBuildIfTestsFail,
+      String xcodeVersion});
+}
+
+/// @nodoc
+class _$BuildSettingsCopyWithImpl<$Res>
+    implements $BuildSettingsCopyWith<$Res> {
+  _$BuildSettingsCopyWithImpl(this._value, this._then);
+
+  final BuildSettings _value;
+  // ignore: unused_field
+  final $Res Function(BuildSettings) _then;
+
+  @override
+  $Res call({
+    Object? flutterBuildIpa = freezed,
+    Object? flutterVersion = freezed,
+    Object? flutterMode = freezed,
+    Object? stopBuildIfTestsFail = freezed,
+    Object? xcodeVersion = freezed,
+  }) {
+    return _then(_value.copyWith(
+      flutterBuildIpa: flutterBuildIpa == freezed
+          ? _value.flutterBuildIpa
+          : flutterBuildIpa // ignore: cast_nullable_to_non_nullable
+              as bool,
+      flutterVersion: flutterVersion == freezed
+          ? _value.flutterVersion
+          : flutterVersion // ignore: cast_nullable_to_non_nullable
+              as String,
+      flutterMode: flutterMode == freezed
+          ? _value.flutterMode
+          : flutterMode // ignore: cast_nullable_to_non_nullable
+              as String,
+      stopBuildIfTestsFail: stopBuildIfTestsFail == freezed
+          ? _value.stopBuildIfTestsFail
+          : stopBuildIfTestsFail // ignore: cast_nullable_to_non_nullable
+              as bool,
+      xcodeVersion: xcodeVersion == freezed
+          ? _value.xcodeVersion
+          : xcodeVersion // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$BuildSettingsCopyWith<$Res>
+    implements $BuildSettingsCopyWith<$Res> {
+  factory _$BuildSettingsCopyWith(
+          _BuildSettings value, $Res Function(_BuildSettings) then) =
+      __$BuildSettingsCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {bool flutterBuildIpa,
+      String flutterVersion,
+      String flutterMode,
+      bool stopBuildIfTestsFail,
+      String xcodeVersion});
+}
+
+/// @nodoc
+class __$BuildSettingsCopyWithImpl<$Res>
+    extends _$BuildSettingsCopyWithImpl<$Res>
+    implements _$BuildSettingsCopyWith<$Res> {
+  __$BuildSettingsCopyWithImpl(
+      _BuildSettings _value, $Res Function(_BuildSettings) _then)
+      : super(_value, (v) => _then(v as _BuildSettings));
+
+  @override
+  _BuildSettings get _value => super._value as _BuildSettings;
+
+  @override
+  $Res call({
+    Object? flutterBuildIpa = freezed,
+    Object? flutterVersion = freezed,
+    Object? flutterMode = freezed,
+    Object? stopBuildIfTestsFail = freezed,
+    Object? xcodeVersion = freezed,
+  }) {
+    return _then(_BuildSettings(
+      flutterBuildIpa: flutterBuildIpa == freezed
+          ? _value.flutterBuildIpa
+          : flutterBuildIpa // ignore: cast_nullable_to_non_nullable
+              as bool,
+      flutterVersion: flutterVersion == freezed
+          ? _value.flutterVersion
+          : flutterVersion // ignore: cast_nullable_to_non_nullable
+              as String,
+      flutterMode: flutterMode == freezed
+          ? _value.flutterMode
+          : flutterMode // ignore: cast_nullable_to_non_nullable
+              as String,
+      stopBuildIfTestsFail: stopBuildIfTestsFail == freezed
+          ? _value.stopBuildIfTestsFail
+          : stopBuildIfTestsFail // ignore: cast_nullable_to_non_nullable
+              as bool,
+      xcodeVersion: xcodeVersion == freezed
+          ? _value.xcodeVersion
+          : xcodeVersion // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_BuildSettings implements _BuildSettings {
+  const _$_BuildSettings(
+      {required this.flutterBuildIpa,
+      required this.flutterVersion,
+      required this.flutterMode,
+      required this.stopBuildIfTestsFail,
+      required this.xcodeVersion});
+
+  factory _$_BuildSettings.fromJson(Map<String, dynamic> json) =>
+      _$$_BuildSettingsFromJson(json);
+
+  @override
+  final bool flutterBuildIpa;
+  @override
+  final String flutterVersion;
+  @override
+  final String flutterMode;
+  @override
+  final bool stopBuildIfTestsFail;
+  @override
+  final String xcodeVersion;
+
+  @override
+  String toString() {
+    return 'BuildSettings(flutterBuildIpa: $flutterBuildIpa, flutterVersion: $flutterVersion, flutterMode: $flutterMode, stopBuildIfTestsFail: $stopBuildIfTestsFail, xcodeVersion: $xcodeVersion)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _BuildSettings &&
+            (identical(other.flutterBuildIpa, flutterBuildIpa) ||
+                other.flutterBuildIpa == flutterBuildIpa) &&
+            (identical(other.flutterVersion, flutterVersion) ||
+                other.flutterVersion == flutterVersion) &&
+            (identical(other.flutterMode, flutterMode) ||
+                other.flutterMode == flutterMode) &&
+            (identical(other.stopBuildIfTestsFail, stopBuildIfTestsFail) ||
+                other.stopBuildIfTestsFail == stopBuildIfTestsFail) &&
+            (identical(other.xcodeVersion, xcodeVersion) ||
+                other.xcodeVersion == xcodeVersion));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, flutterBuildIpa, flutterVersion,
+      flutterMode, stopBuildIfTestsFail, xcodeVersion);
+
+  @JsonKey(ignore: true)
+  @override
+  _$BuildSettingsCopyWith<_BuildSettings> get copyWith =>
+      __$BuildSettingsCopyWithImpl<_BuildSettings>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_BuildSettingsToJson(this);
+  }
+}
+
+abstract class _BuildSettings implements BuildSettings {
+  const factory _BuildSettings(
+      {required bool flutterBuildIpa,
+      required String flutterVersion,
+      required String flutterMode,
+      required bool stopBuildIfTestsFail,
+      required String xcodeVersion}) = _$_BuildSettings;
+
+  factory _BuildSettings.fromJson(Map<String, dynamic> json) =
+      _$_BuildSettings.fromJson;
+
+  @override
+  bool get flutterBuildIpa;
+  @override
+  String get flutterVersion;
+  @override
+  String get flutterMode;
+  @override
+  bool get stopBuildIfTestsFail;
+  @override
+  String get xcodeVersion;
+  @override
+  @JsonKey(ignore: true)
+  _$BuildSettingsCopyWith<_BuildSettings> get copyWith =>
       throw _privateConstructorUsedError;
 }

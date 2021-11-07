@@ -40,12 +40,16 @@ _$_Build _$$_BuildFromJson(Map<String, dynamic> json) => _$_Build(
       workflowId: json['workflowId'] as String,
       branch: json['branch'] as String,
       tag: json['tag'] as String?,
-      status: json['status'] as String,
+      status: $enumDecode(_$BuildStatusEnumMap, json['status']),
       startedAt: DateTime.parse(json['startedAt'] as String),
-      finishedAt: DateTime.parse(json['finishedAt'] as String),
+      finishedAt: json['finishedAt'] == null
+          ? null
+          : DateTime.parse(json['finishedAt'] as String),
       artefacts: (json['artefacts'] as List<dynamic>)
           .map((e) => Artefact.fromJson(e as Map<String, dynamic>))
           .toList(),
+      index: json['index'] as int,
+      config: Config.fromJson(json['config'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_BuildToJson(_$_Build instance) => <String, dynamic>{
@@ -54,29 +58,68 @@ Map<String, dynamic> _$$_BuildToJson(_$_Build instance) => <String, dynamic>{
       'workflowId': instance.workflowId,
       'branch': instance.branch,
       'tag': instance.tag,
-      'status': instance.status,
+      'status': _$BuildStatusEnumMap[instance.status],
       'startedAt': instance.startedAt.toIso8601String(),
-      'finishedAt': instance.finishedAt.toIso8601String(),
+      'finishedAt': instance.finishedAt?.toIso8601String(),
       'artefacts': instance.artefacts,
+      'index': instance.index,
+      'config': instance.config,
     };
 
+const _$BuildStatusEnumMap = {
+  BuildStatus.preparing: 'preparing',
+  BuildStatus.canceled: 'canceled',
+  BuildStatus.failed: 'failed',
+  BuildStatus.finished: 'finished',
+  BuildStatus.unknown: 'unknown',
+};
+
 _$_Artefact _$$_ArtefactFromJson(Map<String, dynamic> json) => _$_Artefact(
-      md5: json['md5'] as String,
       name: json['name'] as String,
-      packageName: json['packageName'] as String?,
       size: json['size'] as int,
       type: json['type'] as String,
       url: json['url'] as String,
+      version: json['version'] as String?,
       versionName: json['versionName'] as String?,
+      version_code: json['version_code'] as String?,
     );
 
 Map<String, dynamic> _$$_ArtefactToJson(_$_Artefact instance) =>
     <String, dynamic>{
-      'md5': instance.md5,
       'name': instance.name,
-      'packageName': instance.packageName,
       'size': instance.size,
       'type': instance.type,
       'url': instance.url,
+      'version': instance.version,
       'versionName': instance.versionName,
+      'version_code': instance.version_code,
+    };
+
+_$_Config _$$_ConfigFromJson(Map<String, dynamic> json) => _$_Config(
+      buildSettings:
+          BuildSettings.fromJson(json['buildSettings'] as Map<String, dynamic>),
+      name: json['name'] as String,
+    );
+
+Map<String, dynamic> _$$_ConfigToJson(_$_Config instance) => <String, dynamic>{
+      'buildSettings': instance.buildSettings,
+      'name': instance.name,
+    };
+
+_$_BuildSettings _$$_BuildSettingsFromJson(Map<String, dynamic> json) =>
+    _$_BuildSettings(
+      flutterBuildIpa: json['flutterBuildIpa'] as bool,
+      flutterVersion: json['flutterVersion'] as String,
+      flutterMode: json['flutterMode'] as String,
+      stopBuildIfTestsFail: json['stopBuildIfTestsFail'] as bool,
+      xcodeVersion: json['xcodeVersion'] as String,
+    );
+
+Map<String, dynamic> _$$_BuildSettingsToJson(_$_BuildSettings instance) =>
+    <String, dynamic>{
+      'flutterBuildIpa': instance.flutterBuildIpa,
+      'flutterVersion': instance.flutterVersion,
+      'flutterMode': instance.flutterMode,
+      'stopBuildIfTestsFail': instance.stopBuildIfTestsFail,
+      'xcodeVersion': instance.xcodeVersion,
     };
