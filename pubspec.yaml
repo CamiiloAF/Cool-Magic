@@ -9,21 +9,30 @@ environment:
 dependencies:
   authentication_repository:
     path: packages/authentication_repository
+  code_magic_repository:
+    path: packages/code_magic_repository
+
   bloc: ^7.2.1
-  flow_builder: ^0.0.4
+  flow_builder: ^0.0.5
+
   flutter:
     sdk: flutter
-  flutter_bloc: ^7.3.1
+  flutter_bloc: ^7.3.3
   font_awesome_flutter: ^9.2.0
   form_inputs:
     path: packages/form_inputs
   formz: ^0.4.1
   google_fonts: ^2.1.0
-  meta: ^1.7.0
   very_good_analysis: ^2.4.0
 
+  permission_handler: ^8.2.6
+  flutter_downloader: ^1.7.1
+  android_path_provider: ^0.3.0
+  device_info_plus: ^3.1.1
+  path_provider: ^2.0.6
+
 dev_dependencies:
-  bloc_test: ^8.4.0
+  bloc_test: ^8.5.0
   build_runner: ^2.1.4
   flutter_test:
     sdk: flutter
