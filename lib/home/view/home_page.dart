@@ -1,6 +1,6 @@
 import 'package:code_magic_repository/code_magic_repository.dart';
 import 'package:cool_magic/app/app.dart';
-import 'package:cool_magic/home/cubit/home_cubit.dart';
+import 'package:cool_magic/home/cubit/home/home_cubit.dart';
 import 'package:cool_magic/home/widgets/home_loading.dart';
 import 'package:cool_magic/home/widgets/home_populated.dart';
 import 'package:flutter/material.dart';

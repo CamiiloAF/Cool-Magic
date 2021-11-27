@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:code_magic_repository/code_magic_repository.dart';
-import 'package:cool_magic/home/bloc/download_apk_cubit.dart';
+import 'package:cool_magic/home/cubit/download_apk/download_apk_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
@@ -202,18 +202,6 @@ class DownloadItem extends StatelessWidget {
         shape: CircleBorder(),
         constraints: BoxConstraints(minHeight: 32.0, minWidth: 32.0),
       );
-      // } else if (task.status == DownloadTaskStatus.paused) {
-      //   return RawMaterialButton(
-      //     onPressed: () {
-      //       onActionClick!(task);
-      //     },
-      //     child: Icon(
-      //       Icons.play_arrow,
-      //       color: Colors.green,
-      //     ),
-      //     shape: CircleBorder(),
-      //     constraints: BoxConstraints(minHeight: 32.0, minWidth: 32.0),
-      //   );
     } else if (task.status == DownloadTaskStatus.complete) {
       return Row(
         mainAxisSize: MainAxisSize.min,
@@ -236,8 +224,6 @@ class DownloadItem extends StatelessWidget {
           )
         ],
       );
-      // } else if (task.status == DownloadTaskStatus.canceled) {
-      //   return Text('Canceled', style: TextStyle(color: Colors.red));
     } else if (task.status == DownloadTaskStatus.failed) {
       return Row(
         mainAxisSize: MainAxisSize.min,
