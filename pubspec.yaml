@@ -11,6 +11,8 @@ dependencies:
     path: packages/authentication_repository
   code_magic_repository:
     path: packages/code_magic_repository
+  codemagic_applications_repository:
+    path: packages/codemagic_applications_repository
 
   bloc: ^7.2.1
   flow_builder: ^0.0.5
@@ -33,7 +35,7 @@ dependencies:
 
 dev_dependencies:
   bloc_test: ^8.5.0
-  build_runner: ^2.1.4
+  build_runner: ^2.1.5
   flutter_test:
     sdk: flutter
   freezed: ^0.15.0+1

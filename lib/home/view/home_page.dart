@@ -35,22 +35,6 @@ class HomePage extends StatelessWidget {
 class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // final textTheme = Theme.of(context).textTheme;
-    // final user = context.select((AppBloc bloc) => bloc.state.user);
-
-    // Align(
-    //   alignment: const Alignment(0, -1 / 3),
-    //   child: Column(
-    //     mainAxisSize: MainAxisSize.min,
-    //     children: [
-    //       Avatar(photo: user.photo),
-    //       const SizedBox(height: 4),
-    //       Text(user.email ?? '', style: textTheme.headline6),
-    //       const SizedBox(height: 4),
-    //       Text(user.name ?? '', style: textTheme.headline6),
-    //     ],
-    //   ),
-    // );
     return BlocBuilder<HomeCubit, HomeState>(builder: (context, state) {
       return state.when(
         initial: () => Offstage(),

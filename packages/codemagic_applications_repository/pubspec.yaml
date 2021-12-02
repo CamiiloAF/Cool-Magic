@@ -1,0 +1,13 @@
+name: codemagic_applications_repository
+description:  A Dart Repository which manages the code magic application domain.
+version: 1.0.0
+publish_to: none
+
+environment:
+  sdk: '>=2.14.0 <3.0.0'
+
+dependencies:
+  cloud_firestore: ^3.1.0
+
+dev_dependencies:
+  lints: ^1.0.1
